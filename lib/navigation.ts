@@ -39,8 +39,8 @@ export const navigationSections: NavigationSection[] = [
     title: "Journey",
     items: [
       {
-        name: "Experience",
-        href: "/experience",
+        name: "Experiences",
+        href: "/experiences",
         icon: Briefcase,
       },
       {
