@@ -1,7 +1,23 @@
-import React from "react";
+import GridSkeleton from "@/components/common/grid-skeleton";
+import TitleCard from "@/components/common/title-card";
+import ProjectContent from "@/components/projects/main-content";
+import { Container } from "@/components/ui/container";
+import React, { Suspense } from "react";
 
 const Projects = () => {
-  return <div>Projects</div>;
+  return (
+    <Container className="py-8">
+      <TitleCard
+        title="Projects"
+        description="A collection of projects I've built to solve problems, learn new technologies, and push the boundaries of what's possible on the web."
+        className="max-w-2xl"
+      />
+
+      <Suspense fallback={<GridSkeleton />}>
+        <ProjectContent />
+      </Suspense>
+    </Container>
+  );
 };
 
 export default Projects;

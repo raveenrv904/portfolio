@@ -29,3 +29,38 @@ export const featuredAgencyProjectsQuery = groq`
     publishedAt
   }
 `;
+
+export const projectsQuery = groq`
+  *[_type == "project"] | order(publishedAt desc){
+    _id,
+    title,
+    slug,
+    description,
+    featuredImage,
+    technologies,
+    githubUrl,
+    liveUrl,
+    status,
+    featured,
+    publishedAt
+  }
+`;
+
+
+export const agencyProjectsQuery = groq`
+  *[_type == "agencyProject"] | order(publishedAt desc){
+    _id,
+    title,
+    slug,
+    description,
+    featuredImage,
+    technologies,
+    projectType,
+    clientIndustry,
+    projectDuration,
+    teamSize,
+    myRole,
+    featured,
+    publishedAt
+  }
+`;
