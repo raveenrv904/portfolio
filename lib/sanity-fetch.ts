@@ -4,7 +4,12 @@ import {
   featuredAgencyProjectsQuery,
   featuredProjectsQuery,
   projectsQuery,
+  siteSettingsQuery,
 } from "./sanity-queries";
+
+export async function getSiteSettings() {
+  return await client.fetch(siteSettingsQuery);
+}
 
 export async function getFeaturedProjects() {
   return await client.fetch(featuredProjectsQuery);

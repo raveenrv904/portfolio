@@ -1,5 +1,16 @@
 import { groq } from "next-sanity";
 
+export const siteSettingsQuery = groq`
+  *[_type == "siteSettings"][0]{
+    title,
+    description,
+    author,
+    email,
+    social,
+    seo
+  }
+`;
+
 export const featuredProjectsQuery = groq`
     *[_type == "project" && featured == true] |  order(publishedAtdesc)[0...3]{
     _id,
@@ -45,7 +56,6 @@ export const projectsQuery = groq`
     publishedAt
   }
 `;
-
 
 export const agencyProjectsQuery = groq`
   *[_type == "agencyProject"] | order(publishedAt desc){
