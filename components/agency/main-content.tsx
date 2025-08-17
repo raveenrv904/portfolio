@@ -3,6 +3,7 @@ import React from "react";
 import { getAgencyProjects } from "@/lib/sanity-fetch";
 import AgencyFilterClient from "./agency-filter-client";
 import type { FilterSection } from "@/types/filter";
+import AgencyGrid from "./agency-grid";
 
 const AgencyContent = async () => {
   const projects = await getAgencyProjects();
@@ -33,22 +34,18 @@ const AgencyContent = async () => {
       title: "Project Types",
       options: allProjectTypes.sort().map((pt) => ({ value: pt, label: pt })),
     },
-    {
-      key: "featured",
-      title: "Project Showcase",
-      options: [
-        { value: "true", label: "Featured Work Only" },
-        { value: "false", label: "All Projects" },
-      ],
-    },
   ];
 
   return (
-    <AgencyFilterClient
-      totalItems={projects.length}
-      filteredCount={projects.length}
-      sections={sections}
-    />
+    <>
+      <AgencyFilterClient
+        totalItems={projects.length}
+        filteredCount={projects.length}
+        sections={sections}
+      />
+
+      <AgencyGrid agencyProjects={projects} />
+    </>
   );
 };
 

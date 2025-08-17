@@ -1,50 +1,55 @@
 "use client";
-import { useProjectStore } from "@/store/project-store";
-import { Project } from "@/types/project";
-import gsap from "gsap";
-import { useSearchParams } from "next/navigation";
+
+import { useAgencyStore } from "@/store/agency-store";
+import { AgencyProject } from "@/types/agency";
 import React, { useEffect, useMemo, useRef } from "react";
 import NotFound from "../common/not-found";
-import { ProjectCard } from "./project-card";
+import gsap from "gsap";
+import { AgencyCard } from "./agency-card";
 
-interface ProjectsProps {
-  projects: Project[];
+interface AgencyProps {
+  agencyProjects: AgencyProject[];
 }
 
-const ProjectGrid = ({ projects }: ProjectsProps) => {
-  const searchParams = useSearchParams();
-  const skillFilter = searchParams.get("skill");
-  const { filters, setIsFiltering, setFilter } = useProjectStore();
+const AgencyGrid = ({ agencyProjects }: AgencyProps) => {
+  const { filters, setIsFiltering } = useAgencyStore();
   const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (gridRef.current) {
-      const cards = gridRef.current.querySelectorAll(".project-card");
+      const cards = gridRef.current.querySelectorAll(".agency-project-card");
       gsap.fromTo(
         cards,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" }
       );
     }
-  }, [projects, filters]);
+  }, [agencyProjects, filters]);
 
   useEffect(() => {
-    if (skillFilter && !filters.technologies.includes(skillFilter)) {
-      setFilter("technologies", [...filters.technologies, skillFilter]);
-    }
-  }, [skillFilter, filters.technologies, setFilter]);
+    setIsFiltering(true);
+
+    const timer = setTimeout(() => {
+      setIsFiltering(false);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [filters, setIsFiltering]);
 
   const filteredProjects = useMemo(() => {
-    setIsFiltering(true);
-    const filtered = projects.filter((project) => {
+    return agencyProjects.filter((project) => {
+      // Search filter
       if (filters.search) {
         const searchTerm = filters.search.toLowerCase();
         const matchesSearch =
           project.title.toLowerCase().includes(searchTerm) ||
           project.description.toLowerCase().includes(searchTerm) ||
+          project.clientIndustry.toLowerCase().includes(searchTerm) ||
+          project.myRole.toLowerCase().includes(searchTerm) ||
           project.technologies.some((tech) =>
             tech.toLowerCase().includes(searchTerm)
           );
+
         if (!matchesSearch) return false;
       }
 
@@ -52,25 +57,22 @@ const ProjectGrid = ({ projects }: ProjectsProps) => {
         if (project.featured !== filters.featured) return false;
       }
 
-      if (filters.status.length > 0) {
-        if (!filters.status.includes(project.status)) return false;
+      if (filters.projectTypes.length > 0) {
+        if (!filters.projectTypes.includes(project.projectType)) return false;
       }
-
+      if (filters.industries.length > 0) {
+        if (!filters.industries.includes(project.clientIndustry)) return false;
+      }
       if (filters.technologies.length > 0) {
         const hasMatchingTech = filters.technologies.some((tech) =>
-          project.technologies.some((projectTech) =>
-            projectTech.toLowerCase().includes(tech.toLowerCase())
-          )
+          project.technologies.includes(tech)
         );
         if (!hasMatchingTech) return false;
       }
 
       return true;
     });
-
-    setTimeout(() => setIsFiltering(false), 300);
-    return filtered;
-  }, [projects, filters, setIsFiltering]);
+  }, [agencyProjects, filters]);
 
   if (filteredProjects.length === 0) {
     return <NotFound />;
@@ -80,11 +82,11 @@ const ProjectGrid = ({ projects }: ProjectsProps) => {
     <div ref={gridRef} className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {filteredProjects.map((project, index) => (
         <div key={project._id} className="project-card">
-          <ProjectCard project={project} index={index} />
+          <AgencyCard project={project} index={index} />
         </div>
       ))}
     </div>
   );
 };
 
-export default ProjectGrid;
+export default AgencyGrid;

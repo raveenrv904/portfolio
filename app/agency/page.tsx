@@ -23,7 +23,6 @@ const AgencyPage = () => {
 
         <AgencyStats />
 
-
         <Suspense fallback={<GridSkeleton />}>
           <AgencyContent />
         </Suspense>

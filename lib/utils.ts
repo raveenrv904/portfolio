@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -53,34 +52,4 @@ export const getProjectTypeEmoji = (type: string) => {
     other: "💼",
   };
   return emojis[type] || "💼";
-};
-
-
-
-export type Project = {
-  title: string;
-  technologies: string[];
-  clientIndustry?: string;
-  projectType?: string;
-  featured?: boolean | null;
-};
-export const applyAgencyFilters = (items: Project[], filters: any) => {
-  const q = (filters.search || "").toLowerCase().trim();
-  const techs: string[] = filters.technologies || [];
-  const inds: string[] = filters.industries || [];
-  const types: string[] = filters.projectTypes || [];
-  const featured = filters.featured;
-
-  return items.filter((p) => {
-    if (q) {
-      const hay =
-        `${p.title} ${p.clientIndustry || ""} ${(p.technologies || []).join(" ")} ${p.projectType || ""}`.toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    if (techs.length && !techs.every((t) => (p.technologies || []).includes(t))) return false;
-    if (inds.length && (!p.clientIndustry || !inds.includes(p.clientIndustry))) return false;
-    if (types.length && (!p.projectType || !types.includes(p.projectType))) return false;
-    if (featured !== null && p.featured !== featured) return false;
-    return true;
-  });
 };
