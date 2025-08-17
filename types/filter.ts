@@ -8,9 +8,9 @@ export interface FilterOption {
 }
 
 export interface FilterSection {
-  key: string; 
-  title: string; 
-  multi?: boolean; 
+  key: string;
+  title: string;
+  multi?: boolean;
   options: FilterOption[];
 }
 

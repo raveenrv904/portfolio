@@ -7,18 +7,17 @@ import gsap from "gsap";
 
 const Filter: React.FC<FilterProps> = ({
   searchPlaceholder = "Search...",
-  totalItems,
-  filteredCount,
   sections,
   filters,
   setFilter,
   clearFilters,
 }) => {
   const [showAdvanced, setShowAdvanced] = useState(false);
-  const [searchValue, setSearchValue] = useState(filters.search as string || "");
+  const [searchValue, setSearchValue] = useState(
+    (filters.search as string) || ""
+  );
   const filterRef = useRef<HTMLDivElement>(null);
 
-  // 🔹 Debounced search
   useEffect(() => {
     const timer = setTimeout(() => {
       setFilter("search", searchValue);
@@ -26,7 +25,6 @@ const Filter: React.FC<FilterProps> = ({
     return () => clearTimeout(timer);
   }, [searchValue, setFilter]);
 
-  // 🔹 Animate on expand/collapse
   useEffect(() => {
     if (filterRef.current) {
       if (showAdvanced) {
@@ -49,14 +47,13 @@ const Filter: React.FC<FilterProps> = ({
 
   const hasActiveFilters =
     filters.search ||
-    Object.values(filters).some(
-      (val) => Array.isArray(val) ? val.length > 0 : val !== null && val !== ""
+    Object.values(filters).some((val) =>
+      Array.isArray(val) ? val.length > 0 : val !== null && val !== ""
     );
 
   return (
     <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 shadow-sm">
-      {/* Search + Toggle */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row gap-4 ">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
           <input
@@ -92,15 +89,10 @@ const Filter: React.FC<FilterProps> = ({
         </div>
       </div>
 
-      {/* Count */}
-      <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
-        {filteredCount === totalItems
-          ? `Showing all ${totalItems} items`
-          : `Showing ${filteredCount} of ${totalItems} items`}
-      </p>
-
-      {/* Expandable filter sections */}
-      <div ref={filterRef} className="overflow-hidden h-0 opacity-0 space-y-6 border-t pt-6 border-neutral-200 dark:border-neutral-700">
+      <div
+        ref={filterRef}
+        className="overflow-hidden h-0 opacity-0 space-y-6 border-t pt-6 border-neutral-200 dark:border-neutral-700"
+      >
         {sections.map((section) => (
           <div key={section.key}>
             <h4 className="text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3">
@@ -109,7 +101,8 @@ const Filter: React.FC<FilterProps> = ({
             <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto">
               {section.options.map((opt) => {
                 const isSelected = Array.isArray(filters[section.key])
-                  ? Array.isArray(filters[section.key]) && (filters[section.key] as string[]).includes(opt.value)
+                  ? Array.isArray(filters[section.key]) &&
+                    (filters[section.key] as string[]).includes(opt.value)
                   : filters[section.key] === opt.value;
 
                 return (
@@ -122,7 +115,9 @@ const Filter: React.FC<FilterProps> = ({
                         setFilter(
                           section.key,
                           isSelected
-                            ? (filters[section.key] as string[]).filter((val) => val !== opt.value)
+                            ? (filters[section.key] as string[]).filter(
+                                (val) => val !== opt.value
+                              )
                             : [...(filters[section.key] as string[]), opt.value]
                         );
                       } else {
@@ -130,7 +125,13 @@ const Filter: React.FC<FilterProps> = ({
                       }
                     }}
                   >
-                    {opt.icon && <span className="mr-2">{opt.icon}</span>}
+                    {opt.icon && (
+                      <span
+                        className={`mr-2 ${isSelected ? "text-white" : opt.color} `}
+                      >
+                        {opt.icon}
+                      </span>
+                    )}
                     {opt.label}
                   </Button>
                 );

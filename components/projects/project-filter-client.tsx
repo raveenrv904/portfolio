@@ -20,7 +20,7 @@ const ProjectFilterClient: React.FC<Props> = ({
 
   return (
     <Filter
-      searchPlaceholder="Search projects..."
+      searchPlaceholder="Search projects by name, description, or technology..."
       totalItems={totalItems}
       filteredCount={filteredCount}
       sections={sections}

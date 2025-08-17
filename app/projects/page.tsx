@@ -6,16 +6,18 @@ import React, { Suspense } from "react";
 
 const Projects = () => {
   return (
-    <Container className="py-8">
+    <Container className="py-6 sm:py-8 lg:py-12">
       <TitleCard
         title="Projects"
         description="A collection of projects I've built to solve problems, learn new technologies, and push the boundaries of what's possible on the web."
         className="max-w-2xl"
       />
 
-      <Suspense fallback={<GridSkeleton />}>
-        <ProjectContent />
-      </Suspense>
+      <div className="mt-8 lg:mt-12">
+        <Suspense fallback={<GridSkeleton />}>
+          <ProjectContent />
+        </Suspense>
+      </div>
     </Container>
   );
 };
