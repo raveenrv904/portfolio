@@ -5,6 +5,7 @@ import {
   featuredProjectsQuery,
   projectsQuery,
   siteSettingsQuery,
+  skillsQuery,
 } from "./sanity-queries";
 
 export async function getSiteSettings() {
@@ -25,4 +26,8 @@ export async function getProjects() {
 
 export async function getAgencyProjects() {
   return await client.fetch(agencyProjectsQuery);
+}
+
+export async function getSkills() {
+  return await client.fetch(skillsQuery);
 }

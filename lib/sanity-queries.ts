@@ -74,3 +74,24 @@ export const agencyProjectsQuery = groq`
     publishedAt
   }
 `;
+
+export const skillsQuery = groq`
+  *[_type == "skill"] | order(order asc, category asc, name asc){
+    _id,
+    name,
+    category,
+    description,
+    featured,
+    icon,
+    relatedProjects[]->{
+      _id,
+      title,
+      slug
+    },
+    relatedExperience[]->{
+      _id,
+      role,
+      company
+    }
+  }
+`;
