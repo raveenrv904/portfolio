@@ -1,6 +1,8 @@
 import client from "./sanity";
 import {
   agencyProjectsQuery,
+  educationQuery,
+  experienceQuery,
   featuredAgencyProjectsQuery,
   featuredProjectsQuery,
   projectsQuery,
@@ -30,4 +32,12 @@ export async function getAgencyProjects() {
 
 export async function getSkills() {
   return await client.fetch(skillsQuery);
+}
+
+export async function getEducation() {
+  return await client.fetch(educationQuery);
+}
+
+export async function getExperience() {
+  return await client.fetch(experienceQuery);
 }

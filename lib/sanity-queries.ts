@@ -95,3 +95,37 @@ export const skillsQuery = groq`
     }
   }
 `;
+
+export const experienceQuery = groq`
+  *[_type == "experience"] | order(startDate desc){
+    _id,
+    company,
+    position,
+    description,
+    startDate,
+    endDate,
+    current,
+    location,
+    employmentType,
+    technologies,
+    achievements,
+    companyLogo
+  }
+`;
+
+export const educationQuery = groq`
+  *[_type == "education"] | order(startDate desc){
+    _id,
+    institution,
+    degree,
+    field,
+    description,
+    startDate,
+    endDate,
+    current,
+    location,
+    gpa,
+    achievements,
+    institutionLogo
+  }
+`;
