@@ -37,7 +37,7 @@ const DashboardContent = () => {
 
   return (
     <div ref={containerRef} className="space-y-6">
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="hidden md:grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6">
           <div className="dashboard-item">
             <OptimizedGithubStats />
@@ -47,8 +47,21 @@ const DashboardContent = () => {
           </div>
         </div>
 
-        <div className="">
+        <div className="dashboard-item">
           <OptimizedLanguagesChart />
+        </div>
+      </div>
+
+      <div className="md:hidden space-y-4">
+        <div className="dashboard-item">
+          <OptimizedGithubStats />
+        </div>
+
+        <div className="dashboard-item">
+          <OptimizedLanguagesChart />
+        </div>
+        <div className="dashboard-item">
+          <OptimizedGitCalender />
         </div>
       </div>
 

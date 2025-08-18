@@ -12,11 +12,11 @@ const TitleCard = ({
   return (
     <div className="mb-4 sm:mb-6">
       <div className="">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight leading-tight">
+        <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight leading-tight">
           {title}
         </h1>
         <p
-          className={`text-neutral-600 dark:text-neutral-400 mt-2 sm:mt-3 text-sm sm:text-base lg:text-lg leading-relaxed ${className}`}
+          className={`text-neutral-600 dark:text-neutral-400 mt-1 sm:mt-3 text-base lg:text-lg leading-relaxed ${className}`}
         >
           {description}
         </p>

@@ -6,7 +6,7 @@ import React, { Suspense } from "react";
 
 const Dashboard = () => {
   return (
-    <Container className="py-8">
+    <Container className="md:py-8">
       <TitleCard
         title="Dashboard"
         description="Welcome back! Here's an overview of your development activity

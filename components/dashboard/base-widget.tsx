@@ -114,11 +114,11 @@ const BaseWidget = ({
         <CardHeader className="pb-2 sm:pb-3 md:pb-4 px-3 sm:px-4 md:px-6 pt-3 sm:pt-4 md:pt-6">
           <div className="flex flex-row sm:items-center justify-between gap-2 sm:gap-4">
             <div className="flex-1 min-w-0">
-              <CardTitle className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400 bg-clip-text text-transparent break-words">
+              <CardTitle className="text-base md:text-lg lg:text-xl font-semibold bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400 bg-clip-text text-transparent break-words">
                 {title}
               </CardTitle>
               {description && (
-                <CardDescription className="mt-1 text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400 break-words">
+                <CardDescription className=" text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400 break-words">
                   {description}
                 </CardDescription>
               )}

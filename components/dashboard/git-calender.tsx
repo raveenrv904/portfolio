@@ -135,7 +135,7 @@ const GitCalender = () => {
             ref={calendarRef}
             className="w-full overflow-x-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:scrollbar-track-gray-800 dark:scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-400 dark:hover:scrollbar-thumb-gray-500"
           >
-            <div className="hidden lg:block min-w-fit">
+            <div className="block min-w-fit">
               <GitHubCalendar
                 username="raveenrv904"
                 colorScheme={currentTheme}
@@ -152,7 +152,7 @@ const GitCalender = () => {
               />
             </div>
 
-            <div className="block sm:hidden min-w-fit pb-2">
+            {/* <div className="block sm:hidden min-w-fit pb-2">
               <GitHubCalendar
                 username="raveenrv904"
                 colorScheme={currentTheme}
@@ -184,7 +184,7 @@ const GitCalender = () => {
                 hideTotalCount={false}
                 showWeekdayLabels={true}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       )}

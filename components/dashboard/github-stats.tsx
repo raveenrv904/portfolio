@@ -89,23 +89,23 @@ function StatItem({ icon, label, value, color, delay }: StatItemProps) {
   return (
     <div
       ref={itemRef}
-      className="relative rounded-xl bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-900 p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer will-change-transform"
+      className="relative rounded-xl bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-900 p-3 md:p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer will-change-transform"
     >
       <div className="flex items-center space-x-3">
         <div
           ref={iconRef}
-          className={`p-3 rounded-xl ${color} shadow-lg flex-shrink-0 will-change-transform`}
+          className={`p-2 md:p-3 rounded-xl ${color} shadow-lg flex-shrink-0 will-change-transform`}
         >
           {icon}
         </div>
         <div className="flex-1 min-w-0">
           <p
             ref={valueRef}
-            className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 opacity-0"
+            className="text-xl md:text-2xl font-bold text-neutral-900 dark:text-neutral-100 opacity-0"
           >
             {value.toLocaleString()}
           </p>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          <p className="text-xs md:text-sm text-neutral-600 dark:text-neutral-400">
             {label}
           </p>
         </div>
@@ -154,7 +154,7 @@ const GithubStats = () => {
           ref={containerRef}
         >
           <StatItem
-            icon={<Globe className="h-5 w-5 text-white" />}
+            icon={<Globe className="h-4 w-4 md:h-5 md:w-5 text-white" />}
             label="Public Repos"
             value={stats.public_repos}
             color="bg-gradient-to-br from-blue-500 to-blue-600"
@@ -162,21 +162,21 @@ const GithubStats = () => {
           />
 
           <StatItem
-            icon={<Lock className="h-5 w-5 text-white" />}
+            icon={<Lock className="h-4 w-4 md:h-5 md:w-5 text-white" />}
             label="Private Repos"
             value={stats.private_repos}
             color="bg-gradient-to-br from-purple-500 to-purple-600"
             delay={0.1}
           />
           <StatItem
-            icon={<Star className="h-5 w-5 text-white" />}
+            icon={<Star className="h-4 w-4 md:h-5 md:w-5 text-white" />}
             label="Total Stars"
             value={stats.total_stars}
             color="bg-gradient-to-br from-yellow-500 to-orange-500"
             delay={0.2}
           />
           <StatItem
-            icon={<Users className="h-5 w-5 text-white" />}
+            icon={<Users className="h-4 w-4 md:h-5 md:w-5 text-white" />}
             label="Followers"
             value={stats.followers}
             color="bg-gradient-to-br from-green-500 to-emerald-500"
