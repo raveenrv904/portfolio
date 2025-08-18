@@ -150,16 +150,6 @@ const NavigationItem = memo(
           {item.name}
         </span>
 
-        {item.badge && (
-          <span
-            ref={badgeRef}
-            className="ml-auto rounded-full bg-gradient-to-r from-primary-100 to-primary-50 px-2.5 py-1 text-xs font-semibold text-primary-700 shadow-sm border border-primary-200/50 dark:from-primary-900/50 dark:to-primary-800/30 dark:text-primary-300 dark:border-primary-700/30 will-change-transform"
-            style={{ opacity: isSidebarCollapsed ? 0 : 1 }}
-          >
-            {item.badge}
-          </span>
-        )}
-
         {isSidebarCollapsed && (
           <div
             ref={tooltipRef}

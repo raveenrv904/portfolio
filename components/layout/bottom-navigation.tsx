@@ -57,11 +57,6 @@ const BottomNavItem = memo(
       <>
         <div className="relative">
           <item.icon className="h-5 w-5 mb-1" />
-          <div
-            ref={indicatorRef}
-            className="absolute -bottom-1 left-1/2 h-0.5 w-6 -translate-x-1/2 bg-primary-500 rounded-full will-change-transform"
-            style={{ scaleX: 0, opacity: 0 } as any}
-          />
         </div>
         <span className="text-xs font-medium truncate max-w-full">
           {item.name}

@@ -4,7 +4,6 @@ import {
   Building2,
   Briefcase,
   Code2,
-  BookOpen,
   User,
 } from "lucide-react";
 import { NavigationSection } from "@/types/navigation";
@@ -31,7 +30,6 @@ export const navigationSections: NavigationSection[] = [
         name: "Agency",
         href: "/agency",
         icon: Building2,
-        badge: "Pro",
       },
     ],
   },
@@ -47,11 +45,6 @@ export const navigationSections: NavigationSection[] = [
         name: "Skills",
         href: "/skills",
         icon: Code2,
-      },
-      {
-        name: "Learnings",
-        href: "/learnings",
-        icon: BookOpen,
       },
     ],
   },

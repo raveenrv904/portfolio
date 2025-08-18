@@ -43,9 +43,9 @@ export const NavbarLogo = memo(() => {
           </span>
         </div>
 
-        <div className="hidden sm:block">
+        <div className="block">
           <h1 className="text-xl font-bold tracking-tight bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-700 bg-clip-text text-transparent dark:from-neutral-100 dark:via-neutral-200 dark:to-neutral-300">
-            Raveen&apos;s Portfolio
+            Raveen R V
           </h1>
           <div
             ref={underlineRef}
