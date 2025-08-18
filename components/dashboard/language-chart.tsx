@@ -173,7 +173,7 @@ const LanguageChart = () => {
 
           <div
             ref={legendRef}
-            className="flex flex-wrap gap-2 justify-center mt-4 px-2 pb-2 opacity-0"
+            className="flex flex-wrap gap-2 justify-center mt-4 px-6 md:px-2 pb-2 opacity-0"
           >
             {chartData.map((entry, index) => (
               <div

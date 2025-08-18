@@ -1,19 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useGitHubContributions } from "@/hooks/use-github-data";
 import { useUIStore } from "@/store/ui-store";
 import gsap from "gsap";
-import dynamic from "next/dynamic";
 import React, { useEffect, useRef } from "react";
 import BaseWidget from "./base-widget";
-
-const Calender = dynamic(() => import("react-github-calendar"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex items-center justify-center py-12">
-      <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary-200 border-t-primary-600"></div>
-    </div>
-  ),
-});
+import GitHubCalendar from "react-github-calendar";
 
 const GitCalender = () => {
   const { username, loading, error } = useGitHubContributions();
@@ -22,8 +12,20 @@ const GitCalender = () => {
   const calendarRef = useRef<HTMLDivElement>(null);
 
   const calendarTheme = {
-    light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
-    dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+    light: [
+      "#f0f0f0", // No contributions - light gray
+      "#c6e48b", // Low contributions - light green
+      "#7bc96f", // Medium-low contributions - medium green
+      "#239a3b", // Medium-high contributions - darker green
+      "#196127", // High contributions - darkest green
+    ],
+    dark: [
+      "#0d1117", // No contributions - dark background
+      "#0e4429", // Low contributions - dark green
+      "#006d32", // Medium-low contributions - medium dark green
+      "#26a641", // Medium-high contributions - bright green
+      "#39d353", // High contributions - brightest green
+    ],
   };
 
   const currentTheme =
@@ -127,25 +129,62 @@ const GitCalender = () => {
       {username && (
         <div
           ref={calendarContainerRef}
-          className="overflow-x-auto opacity-0 will-change-transform"
+          className="opacity-0 will-change-transform"
         >
-          <div ref={calendarRef}>
-            <Calender
-              username={username}
-              theme={{
-                light: calendarTheme.light,
-                dark: calendarTheme.dark,
-              }}
-              colorScheme={currentTheme === "dark" ? "dark" : "light"}
-              fontSize={12}
-              blockSize={12}
-              blockMargin={2}
-              transformData={(data: any[]) => {
-                return data.filter((activity) => {
-                  return activity.count > 0 || Math.random() > 0.8;
-                });
-              }}
-            />
+          <div
+            ref={calendarRef}
+            className="w-full overflow-x-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:scrollbar-track-gray-800 dark:scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-400 dark:hover:scrollbar-thumb-gray-500"
+          >
+            <div className="hidden lg:block min-w-fit">
+              <GitHubCalendar
+                username="raveenrv904"
+                colorScheme={currentTheme}
+                theme={{
+                  light: calendarTheme.light,
+                  dark: calendarTheme.dark,
+                }}
+                fontSize={12}
+                blockSize={12}
+                blockMargin={3}
+                hideColorLegend={false}
+                hideTotalCount={false}
+                showWeekdayLabels={true}
+              />
+            </div>
+
+            <div className="block sm:hidden min-w-fit pb-2">
+              <GitHubCalendar
+                username="raveenrv904"
+                colorScheme={currentTheme}
+                theme={{
+                  light: calendarTheme.light,
+                  dark: calendarTheme.dark,
+                }}
+                fontSize={9}
+                blockSize={6}
+                blockMargin={1.5}
+                hideColorLegend={true}
+                hideTotalCount={false}
+                showWeekdayLabels={false}
+              />
+            </div>
+
+            <div className="hidden sm:block lg:hidden min-w-fit">
+              <GitHubCalendar
+                username="raveenrv904"
+                colorScheme={currentTheme}
+                theme={{
+                  light: calendarTheme.light,
+                  dark: calendarTheme.dark,
+                }}
+                fontSize={10}
+                blockSize={8}
+                blockMargin={2}
+                hideColorLegend={false}
+                hideTotalCount={false}
+                showWeekdayLabels={true}
+              />
+            </div>
           </div>
         </div>
       )}
