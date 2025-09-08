@@ -53,7 +53,7 @@ const Filter: React.FC<FilterProps> = ({
 
   return (
     <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 shadow-sm">
-      <div className="flex flex-col sm:flex-row gap-4 ">
+      <div className="flex flex-col sm:flex-row gap-4 mb-5 ">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
           <input
@@ -89,10 +89,7 @@ const Filter: React.FC<FilterProps> = ({
         </div>
       </div>
 
-      <div
-        ref={filterRef}
-        className="overflow-hidden h-0 opacity-0 space-y-6 border-t pt-6 border-neutral-200 dark:border-neutral-700"
-      >
+      <div ref={filterRef}>
         {sections.map((section) => (
           <div key={section.key}>
             <h4 className="text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3">
@@ -104,7 +101,6 @@ const Filter: React.FC<FilterProps> = ({
                   ? Array.isArray(filters[section.key]) &&
                     (filters[section.key] as string[]).includes(opt.value)
                   : filters[section.key] === opt.value;
-
                 return (
                   <Button
                     key={opt.value}

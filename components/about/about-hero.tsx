@@ -11,6 +11,7 @@ import {
   Zap,
   User,
 } from "lucide-react";
+import { urlFor } from "@/lib/sanity";
 
 type SiteSettings = {
   title?: string;
@@ -28,6 +29,8 @@ type SiteSettings = {
 };
 
 export function AboutHero({ siteSettings }: { siteSettings: SiteSettings }) {
+  console.log("Settings: ", siteSettings);
+
   const ref = useGsapFadeIn<HTMLDivElement>([
     siteSettings?.title,
     siteSettings?.author,
@@ -40,7 +43,7 @@ export function AboutHero({ siteSettings }: { siteSettings: SiteSettings }) {
     { label: "Website", href: siteSettings?.social?.website, Icon: Globe },
   ].filter((s) => !!s.href);
 
-  const hasProfile = Boolean(siteSettings?.profileImage?.url);
+  const hasProfile = Boolean(siteSettings?.profileImage);
 
   return (
     <section
@@ -50,13 +53,13 @@ export function AboutHero({ siteSettings }: { siteSettings: SiteSettings }) {
       p-6 sm:p-10 shadow-lg backdrop-blur-md transition-colors"
     >
       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10">
-        {/* Profile Section */}
         <div className="relative shrink-0">
           {hasProfile ? (
             <div className="relative h-32 w-32 sm:h-40 sm:w-40 rounded-3xl overflow-hidden border border-neutral-300/60 dark:border-neutral-700/60 shadow-lg">
               <Image
                 src={
-                  siteSettings?.profileImage?.url || "/avatar-professional.png"
+                  urlFor(siteSettings?.profileImage).url() ||
+                  "/avatar-professional.png"
                 }
                 alt={siteSettings?.profileImage?.alt || "Profile"}
                 fill
@@ -90,10 +93,6 @@ export function AboutHero({ siteSettings }: { siteSettings: SiteSettings }) {
           </div>
 
           <div className="space-y-2 mb-6 max-w-2xl mx-auto lg:mx-0">
-            {/* <p className="text-lg hidden md:block text-neutral-700 dark:text-neutral-300 leading-relaxed">
-              {siteSettings?.title ||
-                "Building modern, scalable applications with Next.js, TypeScript, and Web3 technologies."}
-            </p> */}
             <p className="text-base font-medium flex items-center justify-center lg:justify-start gap-2 text-primary-600 dark:text-primary-400">
               <Zap className="h-4 w-4 hidden md:block" />
               Aspiring Web3 developer exploring decentralized technologies

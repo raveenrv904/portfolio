@@ -22,13 +22,13 @@ export const navigationSections: NavigationSection[] = [
     title: "Portfolio",
     items: [
       {
-        name: "Projects",
+        name: "Personal Projects",
         href: "/projects",
         icon: FolderOpen,
       },
       {
-        name: "Agency",
-        href: "/agency",
+        name: "My Contributions",
+        href: "/contributions",
         icon: Building2,
       },
     ],

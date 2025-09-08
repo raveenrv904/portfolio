@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { getSiteSettings } from "@/lib/sanity-fetch";
 import { Container } from "@/components/ui/container";
 import { AboutHero } from "@/components/about/about-hero";
-import { ProfessionalPhilosophy } from "@/components/about/professional-philosophy";
+import { ContributionsImpact } from "@/components/about/professional-philosophy";
 import { ServicesOverview } from "@/components/about/services-overview";
 
 async function AboutContent() {
@@ -10,7 +10,7 @@ async function AboutContent() {
   return (
     <>
       <AboutHero siteSettings={siteSettings} />
-      <ProfessionalPhilosophy />
+      <ContributionsImpact />
       <ServicesOverview />
     </>
   );

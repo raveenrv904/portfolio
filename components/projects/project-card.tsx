@@ -104,7 +104,7 @@ export const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
 
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
 
-            <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute top-4 right-4 flex space-x-2 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
               {project.githubUrl && (
                 <Button
                   variant="secondary"

@@ -34,9 +34,8 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({
 
     gsap.fromTo(
       cardRef.current,
-      { opacity: 0, y: 20, scale: 0.95 },
+      { y: 20, scale: 0.95 },
       {
-        opacity: 1,
         y: 0,
         scale: 1,
         duration: 0.6,

@@ -6,9 +6,9 @@ import React, { Suspense } from "react";
 
 const Projects = () => {
   return (
-    <Container className="py-6 sm:py-8 lg:py-12">
+    <Container className="md:py-8">
       <TitleCard
-        title="Projects"
+        title="Personal Projects"
         description="A collection of projects I've built to solve problems, learn new technologies, and push the boundaries of what's possible on the web."
         className="max-w-2xl"
       />
