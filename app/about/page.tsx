@@ -31,7 +31,7 @@ function AboutSkeleton() {
 
 export default function AboutPage() {
   return (
-    <Container className="py-12">
+    <Container className="sm:py-12">
       <Suspense fallback={<AboutSkeleton />}>
         <AboutContent />
       </Suspense>

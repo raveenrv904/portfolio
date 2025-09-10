@@ -38,7 +38,11 @@ const FeaturedProjects = () => {
     async function fetchProjects() {
       try {
         const featuredProjects = await getFeaturedProjects();
-        setProjects(featuredProjects || []);
+        setProjects(
+          featuredProjects.length > 2
+            ? featuredProjects.slice(0, 2)
+            : featuredProjects || []
+        );
       } catch {
         setError("Failed to load featured projects");
       } finally {

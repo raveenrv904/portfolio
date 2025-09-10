@@ -95,7 +95,7 @@ export function AboutHero({ siteSettings }: { siteSettings: SiteSettings }) {
           <div className="space-y-2 mb-6 max-w-2xl mx-auto lg:mx-0">
             <p className="text-base font-medium flex items-center justify-center lg:justify-start gap-2 text-primary-600 dark:text-primary-400">
               <Zap className="h-4 w-4 hidden md:block" />
-              Aspiring Web3 developer exploring decentralized technologies
+              Transforming concepts into code that makes a difference
             </p>
           </div>
 

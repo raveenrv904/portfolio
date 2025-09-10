@@ -64,6 +64,8 @@ export const agencyProjectsQuery = groq`
     title,
     slug,
     description,
+    githubUrl,
+    liveUrl,
     featuredImage,
     technologies,
     projectType,

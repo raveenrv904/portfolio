@@ -191,7 +191,7 @@ export const AgencyCard = forwardRef<HTMLDivElement, AgencyProjectCardProps>(
                   <span className="text-sm">
                     {projectTypeIcons[projectType]}
                   </span>
-                  <span className="capitalize hidden sm:inline">
+                  <span className="capitalize inline">
                     {projectType.replace("-", " ")}
                   </span>
                 </div>
@@ -293,8 +293,7 @@ export const AgencyCard = forwardRef<HTMLDivElement, AgencyProjectCardProps>(
                   className="inline-flex items-center space-x-1 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm px-1"
                   type="button"
                 >
-                  <span className="hidden sm:inline">Case Study</span>
-                  <span className="sm:hidden">View</span>
+                  <span className="inline">Case Study</span>
                   <ExternalLink className="h-3 w-3" />
                 </button>
               </div>

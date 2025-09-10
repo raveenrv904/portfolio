@@ -39,7 +39,12 @@ const FeaturedAgencyProjects = () => {
     async function fetchProjects() {
       try {
         const featuredProjects = await getFeaturedAgencyProjects();
-        setProjects(featuredProjects || []);
+
+        setProjects(
+          featuredProjects.length > 2
+            ? featuredProjects.slice(0, 2)
+            : featuredProjects || []
+        );
       } catch {
         setError("Failed to load agency projects");
       } finally {
@@ -135,7 +140,7 @@ const FeaturedAgencyProjects = () => {
       className="col-span-2"
       action={
         <Button variant="ghost" size="sm" className="cursor-pointer">
-          <Link className="flex item-center" href="/agency">
+          <Link className="flex item-center" href="/contributions">
             <Award className="mr-2 h-4 w-4" />
             <span>View All</span>
             <ExternalLink className="ml-2 h-4 w-4" />
@@ -171,7 +176,7 @@ const FeaturedAgencyProjects = () => {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between">
                       <Link
-                        href={`/agency/${project.slug.current}`}
+                        href={`/contributions/${project.slug.current}`}
                         className="cursor-pointer"
                       >
                         <h4 className="font-semibold text-sm group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-1">
